@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>A Tribute to Those Who Teach</title>
+<style>
+500;600;700&family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&display=swap');
+:root{--gold:#e8bd67;--cream:#fff1c8;--ink:#05040a;--violet:#120d27;--muted:#c5b9c8}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{background:var(--ink);color:#fff;font-family:"Palatino Linotype","Book Antiqua",Palatino,Georgia,serif}
+.stage{position:absolute;inset:0;opacity:0;pointer-events:none;transform:scale(1.06);transition:opacity 1.2s ease,transform 1.4s cubic-bezier(.2,.75,.2,1);overflow:hidden}
+.stage.active{opacity:1;pointer-events:auto;transform:scale(1)}
+.scene{position:absolute;inset:0;overflow:hidden}
+.stage1 .scene{background:
+radial-gradient(circle at 50% 36%,rgba(255,208,115,.22),transparent 16%),
+linear-gradient(180deg,#0b0711 0%,#120a17 52%,#040308 100%)}
+.arch{position:absolute;inset:-12%;border-radius:48% 48% 0 0;border:1px solid rgba(232,189,103,.25);box-shadow:inset 0 0 80px rgba(232,189,103,.04);transform:perspective(700px) rotateX(2deg)}
+.arch:before,.arch:after{content:"";position:absolute;inset:5%;border:1px solid rgba(232,189,103,.12);border-radius:48% 48% 0 0}
+.arch:after{inset:10%;border-color:rgba(255,255,255,.055)}
+.lamp{position:absolute;top:-10px;left:50%;width:2px;height:28vh;background:rgba(232,189,103,.5)}
+.lamp:after{content:"";position:absolute;top:27vh;left:50%;transform:translateX(-50%);width:130px;height:65px;border-radius:50%;background:radial-gradient(ellipse,#ffe4a1 0,#e8bd67 15%,rgba(232,189,103,.14) 55%,transparent 72%);filter:blur(2px);animation:lamp 3s infinite}
+.book-stack{position:absolute;bottom:4%;left:5%;width:250px;height:170px;transform:rotate(-5deg);opacity:.95}
+.book{position:absolute;left:0;width:240px;height:42px;border:1px solid rgba(232,189,103,.5);border-radius:5px;background:linear-gradient(90deg,#100a13,#2b1a22,#0c0710);box-shadow:0 15px 30px #0008}
+.book:nth-child(1){bottom:0;transform:rotate(3deg)}.book:nth-child(2){bottom:37px;transform:rotate(-2deg);width:215px;left:15px}.book:nth-child(3){bottom:74px;transform:rotate(4deg);width:190px;left:27px}
+.book:after{content:"✦";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#d7ad5c;opacity:.55}
+.parchment{position:absolute;right:3%;bottom:0;width:280px;height:310px;background:linear-gradient(145deg,#f7e6b9,#c99e59);clip-path:polygon(4% 4%,96% 0,100% 92%,8% 100%,0 15%);box-shadow:0 20px 50px #0009;transform:rotate(7deg);opacity:.9}
+.parchment:before{content:"";position:absolute;inset:20px;border:1px solid #68491e55}
+.ink-lines{position:absolute;inset:55px 40px;color:#4b351b;opacity:.45;font:13px Georgia;line-height:1.8}
+.quill{position:absolute;right:14%;bottom:17%;font-size:95px;transform:rotate(24deg);filter:drop-shadow(0 12px 14px #0008);animation:quill 4s ease-in-out infinite}
+.petal,.dust{position:absolute;border-radius:50%;background:#f7d98e;box-shadow:0 0 10px #f7d98e;opacity:.6;animation:drift linear infinite}
+.petal{width:7px;height:11px;border-radius:60% 20% 60% 20%}
+.hero{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;z-index:4}
+.hero-inner{max-width:1050px;padding:30px}
+.eyebrow{font:600 11px "Baskerville","Palatino Linotype","Book Antiqua",Georgia,serif;letter-spacing:.45em;color:var(--gold);text-transform:uppercase}
+.hero h1{font:500 clamp(56px,10vw,125px) "Baskerville","Palatino Linotype","Book Antiqua",Georgia,serif;letter-spacing:.03em;line-height:.88;margin:28px 0 18px;text-shadow:0 10px 50px #000}
+.script{font:400 clamp(42px,6vw,78px) "Baskerville","Palatino Linotype","Book Antiqua",Georgia,serif;color:var(--cream)}
+.hero p{font-size:21px;letter-spacing:.08em;color:#e6dce5;margin:25px auto;max-width:720px}
+.ornament{display:flex;align-items:center;justify-content:center;gap:14px;color:var(--gold);margin:25px 0}
+.ornament:before,.ornament:after{content:"";width:130px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.ornament:after{background:linear-gradient(90deg,var(--gold),transparent)}
+.cta{font:600 11px "Baskerville","Palatino Linotype","Book Antiqua",Georgia,serif;letter-spacing:.22em;text-transform:uppercase;color:var(--cream);border:1px solid #e8bd6790;background:linear-gradient(180deg,#e8bd6722,#e8bd6707);padding:17px 34px;border-radius:2px;cursor:pointer;box-shadow:0 0 35px #e8bd6718;transition:.35s}
+.cta:hover{background:#e8bd67;color:#120a0d;box-shadow:0 0 45px #e8bd6744;transform:translateY(-2px)}
+
+/* Stage 2 */
+.stage2 .scene{background:
+radial-gradient(circle at 50% 50%,rgba(113,72,194,.16),transparent 26%),
+radial-gradient(circle at 10% 85%,rgba(232,189,103,.08),transparent 30%),
+linear-gradient(135deg,#05040b,#0d0920 55%,#040308)}
+.constellation{position:absolute;inset:0;background-image:
+radial-gradient(circle,#fff 0 1px,transparent 1.6px);background-size:73px 83px;opacity:.32;animation:stars 18s linear infinite}
+.orbit{position:absolute;border:1px solid #e8bd6726;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-18deg)}
+.o1{width:82vmin;height:32vmin}.o2{width:105vmin;height:48vmin;transform:translate(-50%,-50%) rotate(26deg)}
+.form-scene{position:relative;z-index:4;display:flex;align-items:center;justify-content:center;min-height:100%;text-align:center}
+.form-box{width:min(900px,92vw);padding:30px}
+.form-title{font:500 clamp(38px,6vw,70px) "Baskerville","Palatino Linotype","Book Antiqua",Georgia,serif;line-height:1.02}
+.form-sub{font-size:20px;color:#d8ceda;margin-top:16px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:38px auto 18px;max-width:760px}
+.field{padding:22px 20px;border:1px solid #e8bd6740;background:#ffffff06;box-shadow:inset 0 0 30px #0003;position:relative}
+.field label{display:block;font:600 10px Cinzel;letter-spacing:.25em;color:var(--gold);margin-bottom:13px}
+input{width:100%;background:transparent;border:0;border-bottom:1px solid #e8bd6755;color:#fff;text-align:center;font:22px "Cormorant Garamond";padding:9px;outline:none}
+input:focus{border-color:var(--gold);box-shadow:0 5px 25px #e8bd6712}
+.hint{font:13px Arial;color:#a99eab;margin:16px}
+.error{height:20px;color:#ff9ea9;font:13px Arial;margin-bottom:8px}
+.seal{width:78px;height:78px;border:1px solid #e8bd6770;border-radius:50%;margin:0 auto 22px;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:32px;box-shadow:0 0 35px #e8bd6718}
+
+/* Stage 3 */
+.stage3 .scene{background:
+radial-gradient(circle at 50% 42%,rgba(232,189,103,.22),transparent 18%),
+radial-gradient(circle at 50% 50%,rgba(88,42,133,.13),transparent 42%),
+linear-gradient(180deg,#090611,#150a17,#040308)}
+.burst{position:absolute;inset:0;background:conic-gradient(from 0deg at 50% 50%,transparent 0 8%,#e8bd6710 9%,transparent 16%,#e8bd670c 27%,transparent 35%,#e8bd6710 48%,transparent 60%,#e8bd6708 73%,transparent 100%);animation:burst 20s linear infinite}
+.fireworks{position:absolute;inset:0;overflow:hidden}
+.spark{position:absolute;width:4px;height:4px;border-radius:50%;background:#ffe7a3;box-shadow:0 0 16px #e8bd67;animation:spark 1.8s ease-out forwards}
+.reveal-wrap{position:relative;z-index:5;min-height:100%;display:flex;align-items:center;justify-content:center;padding:30px}
+.invitation{width:min(1100px,94vw);min-height:520px;display:grid;grid-template-columns:1fr 1.05fr 1fr;gap:18px;align-items:stretch;opacity:0;transform:translateY(45px) scale(.94);transition:1.3s cubic-bezier(.2,.8,.2,1)}
+.stage3.show-card .invitation{opacity:1;transform:none}
+.panel{border:1px solid #e8bd6750;background:linear-gradient(145deg,#ffffff0a,#ffffff03);box-shadow:0 25px 80px #0008;backdrop-filter:blur(7px);padding:35px 26px;display:flex;flex-direction:column;justify-content:center;text-align:center;position:relative}
+.panel:before{content:"";position:absolute;inset:12px;border:1px solid #e8bd6718;pointer-events:none}
+.panel-title{font:600 10px Cinzel;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.faculty-name{font:500 clamp(34px,4vw,62px) "Baskerville","Palatino Linotype","Book Antiqua",Georgia,serif;color:var(--cream);line-height:1.05;margin:20px 0 10px}
+.faculty-dept{font:600 12px Cinzel;letter-spacing:.2em;color:#d5c8d6;text-transform:uppercase}
+.thanks{font-size:18px;line-height:1.6;color:#eee6ee;margin:20px 0}
+.quote{font-style:italic;color:var(--gold);font-size:19px}
+.envelope{position:relative;width:250px;height:190px;margin:0 auto 20px;background:linear-gradient(145deg,#b98138,#f0c96f,#9c6628);clip-path:polygon(0 0,100% 0,100% 100%,0 100%);box-shadow:0 25px 50px #0009}
+.envelope:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,transparent 49%,#7d4c1f 50%,transparent 51%),linear-gradient(225deg,transparent 49%,#7d4c1f 50%,transparent 51%);opacity:.7}
+.letter{position:absolute;left:20px;right:20px;top:12px;height:155px;background:#fff1c8;color:#4d3219;box-shadow:0 8px 20px #0005;transform:translateY(35px);transition:1s .2s}
+.stage3.show-card .letter{transform:translateY(-22px)}
+.letter:before{content:"You Are Invited";position:absolute;inset:25px 10px;text-align:center;font:34px "Great Vibes";color:#6d4723}
+.details{display:grid;grid-template-columns:1fr;gap:17px;text-align:left;position:relative;z-index:2}
+.detail{border-bottom:1px solid #e8bd6727;padding-bottom:12px}
+.detail b{display:block;font:600 9px Cinzel;letter-spacing:.22em;color:#9f92a1;margin-bottom:5px}
+.detail span{font:17px Arial;color:#f5d79a}
+.return{margin-top:22px}
+.reveal-curtain{position:absolute;inset:0;z-index:20;background:#07050b;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.stage3.revealing .reveal-curtain{animation:openCurtain 2.5s cubic-bezier(.2,.8,.2,1) forwards}
+.magic{width:8px;height:8px;border-radius:50%;background:#fff0b9;box-shadow:0 0 60px 20px #e8bd67;animation:magic 2s ease-in-out}
+@keyframes openCurtain{0%,55%{opacity:1}100%{opacity:0}}
+@keyframes magic{0%{transform:scale(.1)}35%{transform:scale(1)}100%{transform:scale(18);opacity:0}}
+@keyframes lamp{50%{opacity:.65;transform:scale(1.15)}}
+@keyframes quill{50%{transform:rotate(19deg) translateY(-8px)}}
+@keyframes drift{from{transform:translateY(110vh) translateX(0) rotate(0)}to{transform:translateY(-15vh) translateX(90px) rotate(420deg)}}
+@keyframes stars{to{background-position:73px 83px}}
+@keyframes burst{to{transform:rotate(360deg)}}
+@keyframes spark{0%{transform:translate(0,0) scale(.2);opacity:0}15%{opacity:1}100%{transform:translate(var(--x),var(--y)) scale(.05);opacity:0}}
+@media(max-width:780px){.form-grid{grid-template-columns:1fr}.invitation{grid-template-columns:1fr;max-height:90vh;overflow:auto}.panel{min-height:190px}.parchment,.book-stack,.quill{opacity:.45;transform:scale(.75)}.hero p{font-size:17px}}
+
+
+/* CLASSICAL CINEMATIC FINALE */
+.stage3{background:#050307}
+.grand-scene{position:absolute;inset:0;background:
+ radial-gradient(ellipse at 50% 33%,rgba(255,210,116,.20),transparent 18%),
+ radial-gradient(ellipse at 50% 78%,rgba(210,142,45,.12),transparent 30%),
+ linear-gradient(180deg,#10070a 0%,#09050a 65%,#030206 100%);overflow:hidden}
+.velvet-curtain{position:absolute;top:-10%;bottom:-10%;width:30%;z-index:3;background:
+ radial-gradient(ellipse at 50% 10%,rgba(255,205,117,.14),transparent 18%),
+ repeating-linear-gradient(90deg,#1b080a 0 18px,#310f12 19px 36px,#150608 37px 54px);
+ box-shadow:inset 0 0 55px rgba(0,0,0,.8),0 0 45px rgba(0,0,0,.65)}
+.curtain-left{left:-9%;border-radius:0 55% 15% 0;transform:skewX(7deg)}
+.curtain-right{right:-9%;border-radius:55% 0 0 15%;transform:skewX(-7deg)}
+.spotlight{position:absolute;left:50%;top:-8%;width:44vmin;height:92vmin;transform:translateX(-50%);background:linear-gradient(180deg,rgba(255,226,155,.30),rgba(255,203,100,.03) 72%,transparent);clip-path:polygon(38% 0,62% 0,100% 100%,0 100%);filter:blur(8px)}
+.golden-rays{position:absolute;inset:-20%;background:conic-gradient(from 180deg at 50% 35%,transparent 0 18%,rgba(255,221,140,.06) 21%,transparent 27%,rgba(255,221,140,.05) 37%,transparent 43%,rgba(255,221,140,.07) 52%,transparent 60%,rgba(255,221,140,.04) 73%,transparent 80%);animation:slowRay 30s linear infinite}
+.floor-glow{position:absolute;left:50%;bottom:-14%;width:75%;height:32%;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(232,189,103,.23),transparent 65%);filter:blur(16px)}
+.floating-gold,.spark-field{position:absolute;inset:0;z-index:4;pointer-events:none;overflow:hidden}
+.goldflake{position:absolute;width:7px;height:11px;background:#e8bd67;box-shadow:0 0 13px #e8bd67;opacity:0;animation:goldFloat 4s var(--delay) linear forwards}
+.spark-dot{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff0bd;box-shadow:0 0 15px #e8bd67;opacity:0;animation:sparkFloat 2.8s var(--delay) ease-out forwards}
+.reveal-screen{position:absolute;inset:0;z-index:30;background:#040307;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none;overflow:hidden}
+.stage3.revealing .reveal-screen{animation:revealScreen 3.4s cubic-bezier(.15,.8,.2,1) forwards}
+.reveal-crest{width:78px;height:78px;border:1px solid #e8bd6775;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#f8dc9b;font-size:30px;box-shadow:0 0 55px #e8bd6728;opacity:0;animation:crestIn 1.3s .15s forwards}
+.reveal-line{width:170px;height:1px;background:linear-gradient(90deg,transparent,#e8bd67,transparent);margin:22px 0;opacity:0;animation:fadeUp 1s .35s forwards}
+.reveal-title{font:500 clamp(28px,4.5vw,58px) "Baskerville","Palatino Linotype",Georgia,serif;line-height:1.04;color:#f8e6b5;letter-spacing:.02em;opacity:0;animation:fadeUp 1.2s .45s forwards}
+.reveal-title em{font-style:italic;color:#e8bd67}
+.reveal-sub{margin-top:18px;font:12px Arial,sans-serif;letter-spacing:.25em;text-transform:uppercase;color:#a99aa8;opacity:0;animation:fadeUp 1s .65s forwards}
+.reveal-light{position:absolute;width:8px;height:8px;border-radius:50%;background:#fff5cd;box-shadow:0 0 80px 28px #e8bd67;opacity:0;animation:lightExpand 2.7s .55s forwards}
+
+.triptych{position:relative;z-index:10;width:min(1430px,96vw);height:min(94vh,900px);margin:auto;display:grid;grid-template-columns:.93fr 1.22fr .93fr;gap:12px;align-items:stretch;opacity:0;transform:translateY(35px) scale(.97);transition:opacity 1.2s ease,transform 1.4s ease}
+.stage3.show-card .triptych{opacity:1;transform:none}
+.art-panel{position:relative;overflow:hidden;border:1px solid rgba(232,189,103,.62);background:
+ radial-gradient(circle at 50% 25%,rgba(255,221,144,.07),transparent 30%),
+ linear-gradient(160deg,rgba(23,11,13,.94),rgba(6,5,9,.96));box-shadow:0 22px 70px rgba(0,0,0,.65),inset 0 0 70px rgba(0,0,0,.35);padding:52px 34px;text-align:center}
+.art-panel:before{content:"";position:absolute;inset:14px;border:1px solid rgba(232,189,103,.22);pointer-events:none}
+.art-panel:after{content:"";position:absolute;inset:20px;border:1px solid rgba(232,189,103,.08);pointer-events:none}
+.panel-kicker,.centre-kicker{font:600 12px "Baskerville","Palatino Linotype",Georgia,serif;letter-spacing:.28em;text-transform:uppercase;color:#e8bd67;position:relative;z-index:2}
+.mini-rule{width:78px;height:1px;background:linear-gradient(90deg,transparent,#e8bd67,transparent);margin:21px auto;position:relative;z-index:2}
+.mini-rule.lower{margin-top:24px}
+.tribute-heading{font:500 clamp(30px,3.3vw,52px) "Baskerville","Palatino Linotype",Georgia,serif;line-height:1.05;letter-spacing:.03em;color:#f8e8bd;text-transform:uppercase;position:relative;z-index:2}
+.ornament-line,.centre-rule{color:#e8bd67;margin:19px 0;font-size:18px;position:relative;z-index:2}
+.faculty-name{font:500 clamp(34px,4vw,60px) "Baskerville","Palatino Linotype",Georgia,serif;line-height:1.03;color:#fff2cc;position:relative;z-index:2}
+.faculty-dept{display:inline-block;margin-top:10px;padding:8px 17px;border-top:1px solid #e8bd6755;border-bottom:1px solid #e8bd6755;font:600 11px Arial,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#e8bd67;position:relative;z-index:2;max-width:95%}
+.tribute-copy,.centre-copy{font:400 17px/1.5 "Baskerville","Palatino Linotype",Georgia,serif;color:#ece4e9;position:relative;z-index:2}
+.quote{font:italic 18px/1.35 "Baskerville","Palatino Linotype",Georgia,serif;color:#e8bd67;margin-top:18px;position:relative;z-index:2}
+.book-art{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);width:72%;height:100px;opacity:.65}
+.book-art span{position:absolute;left:50%;transform:translateX(-50%);height:22px;border:1px solid #b57e35;background:linear-gradient(90deg,#24100f,#5b331d,#24100f);box-shadow:0 7px 15px #0008}
+.book-art span:nth-child(1){width:82%;bottom:0}.book-art span:nth-child(2){width:72%;bottom:20px}.book-art span:nth-child(3){width:63%;bottom:40px}.book-art span:nth-child(4){width:52%;bottom:60px}
+.quill-art{position:absolute;bottom:48px;left:22%;font-size:54px;transform:rotate(24deg);filter:drop-shadow(0 8px 10px #000)}
+.centre-panel{background:
+ radial-gradient(ellipse at 50% 22%,rgba(255,222,147,.18),transparent 22%),
+ linear-gradient(180deg,#12090b,#09050a 65%,#050307)}
+.archway{position:absolute;left:7%;right:7%;top:-10%;height:62%;border:2px solid rgba(232,189,103,.26);border-bottom:0;border-radius:48% 48% 0 0;box-shadow:inset 0 0 55px #e8bd6708}
+.centre-kicker{margin-top:3px}
+.invited-title{font:500 clamp(48px,6.2vw,88px) "Baskerville","Palatino Linotype",Georgia,serif;line-height:.84;color:#fff0bf;margin-top:22px;position:relative;z-index:2;text-shadow:0 8px 35px #000}
+.invited-title span{color:#e8bd67}
+.teachers-day-line{font:600 clamp(14px,1.6vw,22px)/1.2 "Baskerville","Palatino Linotype",Georgia,serif;letter-spacing:.18em;color:#e7c987;position:relative;z-index:2}
+.teachers-day-line b{font-weight:500;font-size:1.08em}.teachers-day-line em{display:block;font-size:1.55em;letter-spacing:.03em;font-weight:400;color:#f4d898;margin-top:5px}
+.grand-envelope{position:relative;width:min(390px,75%);height:215px;margin:28px auto 8px;z-index:2;filter:drop-shadow(0 24px 35px rgba(0,0,0,.65))}
+.envelope-back{position:absolute;inset:38px 0 0;background:linear-gradient(145deg,#5d3a1c,#c38a39,#68401d);clip-path:polygon(0 0,100% 0,100% 100%,0 100%);border:1px solid #e8bd67}
+.envelope-front{position:absolute;inset:38px 0 0;background:linear-gradient(135deg,transparent 49.5%,#7d4e22 50%,transparent 50.5%),linear-gradient(225deg,transparent 49.5%,#70451e 50%,transparent 50.5%);clip-path:polygon(0 0,50% 57%,100% 0,100% 100%,0 100%)}
+.letter-sheet{position:absolute;left:8%;right:8%;top:0;height:165px;background:#fff0bf;color:#4e331c;border:1px solid #c99d56;box-shadow:0 10px 25px #0006;z-index:2;padding-top:24px;transform:translateY(18px);opacity:0}
+.stage3.show-card .letter-sheet{animation:letterReveal 1.25s 1.1s cubic-bezier(.18,.8,.2,1) forwards}
+.letter-caption{font:600 9px Arial,sans-serif;letter-spacing:.22em;text-transform:uppercase}.letter-main{font:500 36px/ .88 "Baskerville","Palatino Linotype",Georgia,serif;margin-top:10px}.letter-star{margin-top:11px;color:#a67635}
+.seal{position:absolute;left:50%;bottom:15px;transform:translateX(-50%);width:48px;height:48px;border-radius:50%;background:#8e5d24;border:2px solid #f0c96d;box-shadow:0 4px 12px #0008;display:flex;align-items:center;justify-content:center;color:#f9dfa0;z-index:4}
+.centre-copy{margin-top:14px}
+.details-panel{padding-left:30px;padding-right:30px}
+.event-detail{position:relative;z-index:2;display:grid;grid-template-columns:58px 1fr;gap:17px;align-items:center;text-align:left;padding:24px 0;border-bottom:1px solid rgba(232,189,103,.22)}
+.event-icon{width:48px;height:48px;border:1px solid #e8bd6770;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#f3d48d;font:28px Georgia;box-shadow:0 0 22px #e8bd6710}
+.clock-icon{font-size:34px}
+.event-detail b{display:block;font:600 10px Arial,sans-serif;letter-spacing:.23em;text-transform:uppercase;color:#e8bd67;margin-bottom:7px}.event-detail span{display:block;font:500 20px/1.25 "Baskerville","Palatino Linotype",Georgia,serif;color:#fff0bf}
+.details-closing{position:relative;z-index:2;font:400 17px/1.55 "Baskerville","Palatino Linotype",Georgia,serif;color:#d8ced8;margin:27px 0}
+.grand-return{position:relative;z-index:2;width:100%;padding:17px 15px;border:1px solid #e8bd6780;background:linear-gradient(180deg,#2a1917,#110b0d);color:#f4d898;font:600 11px "Baskerville","Palatino Linotype",Georgia,serif;letter-spacing:.22em;text-transform:uppercase;cursor:pointer;box-shadow:inset 0 0 25px #e8bd6708;transition:.35s}
+.grand-return:hover{background:#e8bd67;color:#160d0c;box-shadow:0 0 35px #e8bd6740}
+.corner{position:absolute;width:48px;height:48px;border-color:#e8bd6780;border-style:solid;z-index:2}.c1{top:7px;left:7px;border-width:1px 0 0 1px}.c2{top:7px;right:7px;border-width:1px 1px 0 0}.c3{bottom:7px;left:7px;border-width:0 0 1px 1px}.c4{bottom:7px;right:7px;border-width:0 1px 1px 0}
+@keyframes revealScreen{0%,63%{opacity:1}100%{opacity:0}}
+@keyframes crestIn{0%{opacity:0;transform:scale(.3) rotate(-25deg)}60%{opacity:1;transform:scale(1.08) rotate(5deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes lightExpand{0%{opacity:0;transform:scale(.2)}45%{opacity:1}100%{opacity:0;transform:scale(90)}}
+@keyframes slowRay{to{transform:rotate(360deg)}}
+@keyframes goldFloat{0%{opacity:0;transform:translateY(-30px) rotate(0)}12%{opacity:.85}100%{opacity:0;transform:translateY(110vh) rotate(720deg)}}
+@keyframes sparkFloat{0%{opacity:0;transform:translateY(20px) scale(.2)}20%{opacity:.9}100%{opacity:0;transform:translate(var(--sx),var(--sy)) scale(.05)}}
+@keyframes letterReveal{0%{opacity:0;transform:translateY(35px) scale(.94)}55%{opacity:1;transform:translateY(-18px) scale(1.02)}100%{opacity:1;transform:translateY(-8px) scale(1)}}
+@media(max-width:900px){.triptych{width:96vw;height:94vh;grid-template-columns:1fr;overflow:auto}.art-panel{min-height:520px}.centre-panel{min-height:610px}.tribute-heading{font-size:38px}.grand-envelope{width:330px}.event-detail span{font-size:18px}.velvet-curtain{width:20%}}
+@media(max-width:560px){.triptych{height:94vh}.art-panel{padding:42px 22px;min-height:470px}.centre-panel{min-height:570px}.grand-envelope{width:290px}.invited-title{font-size:52px}.event-detail{grid-template-columns:50px 1fr}.event-detail span{font-size:17px}}
+
+</style></head>
+<body>
+
+<section class="stage active stage1" id="stage1">
+<div class="scene"><div class="arch"></div><div class="lamp"></div><div class="book-stack"><div class="book"></div><div class="book"></div><div class="book"></div></div><div class="parchment"><div class="ink-lines">Knowledge is a light.<br>Guidance becomes a path.<br>Every lesson leaves a mark.<br>Every teacher shapes a future.</div></div><div class="quill">🪶</div></div>
+<div class="hero"><div class="hero-inner">
+<div class="eyebrow">A Student-Created Tribute</div><h1>HAPPY<br><span class="script">Teachers' Day</span></h1>
+<div class="ornament">✦</div><p>For those who turn questions into curiosity, lessons into memories, and students into possibilities.</p>
+<button class="cta" onclick="go(2)">Open the Invitation</button></div></div>
+</section>
+
+<section class="stage stage2" id="stage2">
+<div class="scene"><div class="constellation"></div><div class="orbit o1"></div><div class="orbit o2"></div></div>
+<div class="form-scene"><div class="form-box">
+<div class="seal">✦</div><div class="eyebrow">A Personal Moment</div>
+<div class="form-title">Tell us who you are,<br><span class="script">and we'll reveal the rest.</span></div>
+<div class="form-sub">Your serial number identifies your invitation. Your name adds the human touch.</div>
+<div class="form-grid">
+<div class="field"><label>Serial Number · Primary</label><input id="serial" type="number" min="1" placeholder="Enter serial number"></div>
+<div class="field"><label>Your Name · Personal Touch</label><input id="dummyName" type="text" placeholder="Enter your name"></div>
+</div>
+<div class="error" id="error"></div><button class="cta" onclick="reveal()">Reveal My Invitation</button>
+<div class="hint">Only the serial number is used to identify the faculty record.</div>
+</div></div>
+</section>
+
+<section class="stage stage3" id="stage3">
+  <div class="grand-scene">
+    <div class="velvet-curtain curtain-left"></div>
+    <div class="velvet-curtain curtain-right"></div>
+    <div class="spotlight"></div>
+    <div class="golden-rays"></div>
+    <div class="floating-gold" id="floatingGold"></div>
+    <div class="spark-field" id="sparkField"></div>
+    <div class="floor-glow"></div>
+  </div>
+
+  <div class="reveal-screen" id="revealScreen">
+    <div class="reveal-crest">✦</div>
+    <div class="reveal-line"></div>
+    <div class="reveal-title">A Moment Prepared<br><em>Especially For You</em></div>
+    <div class="reveal-sub">Your invitation is about to unfold</div>
+    <div class="reveal-light"></div>
+  </div>
+
+  <main class="triptych">
+    <article class="art-panel tribute-panel">
+      <div class="corner c1"></div><div class="corner c2"></div><div class="corner c3"></div><div class="corner c4"></div>
+      <div class="panel-kicker">A Tribute To You</div>
+      <div class="mini-rule"></div>
+      <div class="tribute-heading">Honoring<br>The Light<br>You Are</div>
+      <div class="ornament-line">✦</div>
+      <div class="faculty-name" id="facultyName"></div>
+      <div class="faculty-dept" id="facultyDept"></div>
+      <div class="mini-rule lower"></div>
+      <p class="tribute-copy">Your knowledge inspires,<br>your patience guides, and your<br>presence makes a difference.</p>
+      <p class="quote">“Your wisdom<br>shapes futures.”</p>
+      <div class="book-art"><span></span><span></span><span></span><span></span></div>
+      <div class="quill-art">🪶</div>
+    </article>
+
+    <article class="art-panel centre-panel">
+      <div class="archway"></div>
+      <div class="centre-kicker">With Heartfelt Gratitude</div>
+      <div class="invited-title">You Are<br><span>Invited</span></div>
+      <div class="centre-rule">✦</div>
+      <div class="teachers-day-line">TO A SPECIAL<br><b>TEACHERS’ DAY</b><br><em>Celebration</em></div>
+
+      <div class="grand-envelope">
+        <div class="letter-sheet">
+          <div class="letter-caption">With Gratitude</div>
+          <div class="letter-main">You Are<br>Invited</div>
+          <div class="letter-star">✦</div>
+        </div>
+        <div class="envelope-back"></div>
+        <div class="envelope-front"></div>
+        <div class="seal">✦</div>
+      </div>
+
+      <p class="centre-copy">Join us as we celebrate the people<br>whose everyday work creates<br>extraordinary futures.</p>
+    </article>
+
+    <article class="art-panel details-panel">
+      <div class="corner c1"></div><div class="corner c2"></div><div class="corner c3"></div><div class="corner c4"></div>
+      <div class="panel-kicker">Save The Moment</div>
+      <div class="mini-rule"></div>
+      <div class="event-detail">
+        <div class="event-icon">▦</div>
+        <div><b>Date</b><span id="eventDate">Coming Soon</span></div>
+      </div>
+      <div class="event-detail">
+        <div class="event-icon clock-icon">◷</div>
+        <div><b>Time</b><span id="eventTime">Coming Soon</span></div>
+      </div>
+      <div class="event-detail">
+        <div class="event-icon">⌖</div>
+        <div><b>Venue</b><span id="eventVenue">Coming Soon</span></div>
+      </div>
+      <div class="details-closing">Let us celebrate the dedication,<br>the memories and the journey<br>together.</div>
+      <button class="grand-return" onclick="go(1)">Return To Beginning</button>
+    </article>
+  </main>
+</section>
+
+<script>
+const facultyData=[{"id": 1, "name": "B. DAMODARA RAO", "department": "Principal"}, {"id": 2, "name": "R NAVEEN KUMAR", "department": "Vice Principal"}, {"id": 3, "name": "A VIKRAM KUMAR", "department": "Campus Incharge (BCA/BBA)"}, {"id": 4, "name": "P R P NAIDU", "department": "Lecturer in Mathematics"}, {"id": 5, "name": "P. MURALI KRISHNA", "department": "Head of the Department in Physics"}, {"id": 6, "name": "Y. ARUNA", "department": "Head of the Department in Chemistry"}, {"id": 7, "name": "K. BALA KRISHNA", "department": "Lecturer in Chemistry"}, {"id": 8, "name": "D. SRINIVAS", "department": "Head of the Department in Computer Science"}, {"id": 9, "name": "T. SIVA KUMARI", "department": "Lecturer in Computer Science"}, {"id": 10, "name": "S GEETHA", "department": "Lecturer in Computer Science"}, {"id": 11, "name": "V RAMANA", "department": "Lecturer in Computer Science"}, {"id": 12, "name": "G B S PAVAN KUMAR", "department": "Lecturer in Computer Science"}, {"id": 13, "name": "M NEELIMA", "department": "Lecturer in Computer Science"}, {"id": 14, "name": "L MOHAN RAO", "department": "Lecturer in Computer Science"}, {"id": 15, "name": "P.N. VENKATESWARA RAO", "department": "Lecturer in Computer Science"}, {"id": 16, "name": "P. LAVANYA", "department": "Lecturer in Computer Science"}, {"id": 17, "name": "A JOTHNSNA SIVANI", "department": "Lecturer in Computer Science"}, {"id": 18, "name": "K MANIKANTA", "department": "Lecturer in Computer Science"}, {"id": 19, "name": "T. NAVEEN", "department": "Lecturer in Computer Science"}, {"id": 20, "name": "U. RAJESH BABU", "department": "Lecturer in Computer Science"}, {"id": 21, "name": "P. MANOHAR", "department": "Lecturer in Computer Science"}, {"id": 22, "name": "B. PRAVALLIKA", "department": "Lecturer in Computer Science"}, {"id": 23, "name": "B. SRINIVAS RAO", "department": "Lecturer in Computer Science"}, {"id": 24, "name": "B. DIVYA", "department": "Lecturer in Statistics"}, {"id": 25, "name": "T SHALINI", "department": "Lecturer in Management"}, {"id": 26, "name": "POOJA SHARMA", "department": "Lecturer in Management"}, {"id": 27, "name": "P.SIREESHA", "department": "Lecturer in Management"}, {"id": 28, "name": "N. PAVANI PRIYANKA", "department": "Lecturer in Management"}, {"id": 29, "name": "N.T.CHINNARAO", "department": "Lecturer in Telugu"}, {"id": 30, "name": "K. SRAVANI", "department": "Lecturer in Telugu"}, {"id": 31, "name": "R. SURESH KUMAR", "department": "Head of the Department in English"}, {"id": 32, "name": "M.GOPALA RAO", "department": "Lecturer in English"}, {"id": 33, "name": "K.SRINIVAS", "department": "Lecturer in English"}, {"id": 34, "name": "G TATA RAO", "department": "Lecturer in English"}, {"id": 35, "name": "SAI KRISHNA", "department": "Lecturer in English"}, {"id": 36, "name": "A.SURYA NARAYANA", "department": "Head of the Department in CRT"}, {"id": 37, "name": "M.MOULEENDRA", "department": "Lecturer in CRT"}, {"id": 38, "name": "B.SATYANARAYANA", "department": "Lecturer in CRT"}, {"id": 39, "name": "B.BHANU PRASAD", "department": "Lecturer in CRT"}, {"id": 40, "name": "G. GURUSWAMI REDDY", "department": "Lecturer in CRT"}, {"id": 41, "name": "R.VENUGOPALA RAO", "department": "Librarian"}];
+const EVENT_DATE="Coming Soon";
+const EVENT_TIME="Coming Soon";
+const EVENT_VENUE="Coming Soon";
+eventDate.textContent=EVENT_DATE;eventTime.textContent=EVENT_TIME;eventVenue.textContent=EVENT_VENUE;
+
+function makePetals(){
+ for(let i=0;i<55;i++){let p=document.createElement("i");p.className="petal";p.style.left=Math.random()*100+"%";p.style.top=(-Math.random()*30)+"%";p.style.animationDuration=(7+Math.random()*9)+"s";p.style.animationDelay=(-Math.random()*10)+"s";document.body.appendChild(p)}
+}
+makePetals();
+
+function go(n){
+ document.querySelectorAll(".stage").forEach(s=>s.classList.remove("active","revealing","show-card"));
+ document.getElementById("stage"+n).classList.add("active");
+ if(n===2)setTimeout(()=>serial.focus(),600);
+}
+
+
+function makeGoldRain(){
+ const box=document.getElementById("goldRain");
+ box.innerHTML="";
+ for(let i=0;i<95;i++){
+  const p=document.createElement("i");
+  p.className="gold-piece";
+  p.style.left=(Math.random()*100)+"%";
+  p.style.height=(7+Math.random()*12)+"px";
+  p.style.width=(3+Math.random()*5)+"px";
+  p.style.setProperty("--delay",(Math.random()*1.4)+"s");
+  p.style.transform="rotate("+(Math.random()*360)+"deg)";
+  box.appendChild(p);
+ }
+}
+function makeInviteParticles(){
+ const box=document.getElementById("inviteParticles");
+ box.innerHTML="";
+ for(let i=0;i<34;i++){
+  const p=document.createElement("i");
+  p.className="invite-dot";
+  p.style.left=(5+Math.random()*90)+"%";
+  p.style.top=(8+Math.random()*84)+"%";
+  p.style.animationDelay=(-Math.random()*3)+"s";
+  p.style.animationDuration=(2.2+Math.random()*2.5)+"s";
+  box.appendChild(p);
+ }
+}
+
+
+function createGoldParticles(){
+  const box=document.getElementById("floatingGold");
+  box.innerHTML="";
+  for(let i=0;i<80;i++){
+    const p=document.createElement("i");
+    p.className="goldflake";
+    p.style.left=(Math.random()*100)+"%";
+    p.style.width=(3+Math.random()*6)+"px";
+    p.style.height=(7+Math.random()*13)+"px";
+    p.style.setProperty("--delay",(Math.random()*2.2)+"s");
+    box.appendChild(p);
+  }
+}
+function createSparkField(){
+  const box=document.getElementById("sparkField");
+  box.innerHTML="";
+  for(let i=0;i<45;i++){
+    const p=document.createElement("i");
+    p.className="spark-dot";
+    p.style.left=(20+Math.random()*60)+"%";
+    p.style.top=(20+Math.random()*50)+"%";
+    p.style.setProperty("--sx",((Math.random()-.5)*280)+"px");
+    p.style.setProperty("--sy",((Math.random()-.5)*220)+"px");
+    p.style.setProperty("--delay",(Math.random()*1.8)+"s");
+    box.appendChild(p);
+  }
+}
+
+function fireworks(){
+ const box=document.getElementById("fireworks");box.innerHTML="";
+ for(let k=0;k<6;k++){let cx=15+Math.random()*70,cy=12+Math.random()*48;
+  for(let i=0;i<24;i++){let s=document.createElement("i");s.className="spark";s.style.left=cx+"%";s.style.top=cy+"%";let a=i*Math.PI*2/24;let r=80+Math.random()*110;s.style.setProperty("--x",Math.cos(a)*r+"px");s.style.setProperty("--y",Math.sin(a)*r+"px");s.style.animationDelay=(k*.16)+"s";box.appendChild(s)}
+ }
+}
+
+function reveal(){
+ const id=parseInt(document.getElementById("serial").value,10);
+ const name=document.getElementById("dummyName").value.trim();
+ const err=document.getElementById("error");err.textContent="";
+ if(!Number.isInteger(id)||id<1){err.textContent="Please enter a valid serial number.";return}
+ if(!name){err.textContent="Please enter your name.";return}
+ const f=facultyData.find(x=>String(x.id)===String(id));
+ if(!f){err.textContent="That serial number was not found.";return}
+ document.getElementById("facultyName").textContent=f.name;
+ document.getElementById("facultyDept").textContent=f.department;
+ document.querySelectorAll(".stage").forEach(s=>s.classList.remove("active","revealing","show-card"));
+ const s=document.getElementById("stage3");s.classList.add("active","revealing");
+ createGoldParticles();
+ createSparkField();
+ setTimeout(()=>s.classList.add("show-card"),2450);
+}
+
+serial.addEventListener("keydown",e=>{if(e.key==="Enter")reveal()});
+dummyName.addEventListener("keydown",e=>{if(e.key==="Enter")reveal()});
+</script>
+</body></html>
